@@ -3,8 +3,6 @@ var users = [{ "id": 1, "name": "Leanne Graham", "username": "Bret", "email": "S
 function initTable() {
     var Table = document.getElementById("user");
     var info = document.getElementById("form")
-    console.log(Table);
-    console.log(info);
     var Thead = document.createElement("thead");
     var Trow = document.createElement("tr");
     var Head = document.createElement("th");
@@ -22,20 +20,22 @@ function initTable() {
     }
     Table.appendChild(Thead);
     Table.appendChild(Tbody);
-    info.appendChild(cell);
+    //info.appendChild(cell);
 }
 
 initTable();
 
-
-
-
+/*
+ * a click event handler is use to display the user information
+ * @param {i}  number   - index of user item 
+ * @returns function    - a anonymus function which gets executed on click event 
+ */
 function display(i) {
     return function () {
         console.log(users[i]);
         const userId = document.getElementById("user_id");
         userId.value = users[i].id;
-        
+
         const name = document.getElementById("name");
         name.value = users[i].name;
 
@@ -46,15 +46,15 @@ function display(i) {
         mail.value = users[i].email;
 
         const address = document.getElementById("address");
-        address.value = users[i].address.street + users[i].address.suite + users[i].address.city + users[i].address.zipcode + users[i].address.geo + users[i].address.geo.lat + users[i].address.geo.lng;
-        
+        address.innerText = `${users[i].address.street}, ${users[i].address.suite}, ${users[i].address.city}, ${users[i].address.zipcode}, ${users[i].address.geo.lat}, ${users[i].address.geo.lng}`;
+
         const mobile = document.getElementById("phone");
         mobile.value = users[i].phone;
-        
+
         const website = document.getElementById("site");
         website.value = users[i].website;
 
         const company = document.getElementById("company");
-        company.value = users[i].company.name + users[i].company.catchPhrase + users[i].company.bs;
+        company.innerText = `${users[i].company.name}, ${users[i].company.catchPhrase}, ${users[i].company.bs}`;
     }
 }
